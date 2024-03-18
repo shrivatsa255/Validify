@@ -97,7 +97,7 @@ const verifyProduct = () => {
             />
             </div>
             )}
-              {startScan && (<QRscanner />)}
+              {startScan && (<DynamicQRscanner />)}
           </div>
         </div>
           <div className="ml-4 sm:ml-0">
