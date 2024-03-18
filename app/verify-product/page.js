@@ -6,7 +6,6 @@ const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: f
 const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
 const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
 const DynamicQRscanner = dynamic(() => import('../components/QRscanner'), { ssr: false });
-
 import QrScanner from "qr-scanner";
 
 
@@ -18,9 +17,15 @@ const verifyProduct = () => {
  } = useStore();
   const [companyContractAddress, setCompanyContractAddress] = useState("");
   const [productId, setProductId] = useState("");
-
-
   const [startScan, setStartScan] = useState(false)
+  const [store, setStore] = useState(null);
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    if (typeof window !== 'undefined') {
+      const storeData = useStore();
+      setStore(storeData);
+    }
+ }, []);
 
   const handleVerifyProduct = () =>{
     checkProduct(companyContractAddress,productId)

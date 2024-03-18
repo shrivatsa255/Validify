@@ -10,6 +10,14 @@ const getContract = () => {
   const { contractAddress, fetchContractAddress} = useStore()
   const [walletAddress, setWalletAddress] = useState('');
 const [address, setAddress] = useState(null)
+const [store, setStore] = useState(null);
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    if (typeof window !== 'undefined') {
+      const storeData = useStore();
+      setStore(storeData);
+    }
+ }, []);
  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
     await fetchContractAddress(walletAddress);

@@ -19,6 +19,14 @@ const AddProduct = () => {
     companyContractAddress
  } = useStore();
 
+ const [store, setStore] = useState(null);
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    if (typeof window !== 'undefined') {
+      const storeData = useStore();
+      setStore(storeData);
+    }
+ }, []);
  // State variables for user input
 //  const [companyContractAddress, setCompanyContractAddress] = useState("");
  const [productId, setProductId] = useState("");

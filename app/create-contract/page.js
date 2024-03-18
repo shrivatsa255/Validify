@@ -13,6 +13,14 @@ const CreateContract = () => {
   const [modal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
   const router = useRouter()
+  const [store, setStore] = useState(null);
+  useEffect(() => {
+    // Ensure this runs only on the client side
+    if (typeof window !== 'undefined') {
+      const storeData = useStore();
+      setStore(storeData);
+    }
+ }, []);
   const handleCreateContract = () =>{
     contractAddress ? toast.warning("Contract Already Exists")  : createContract() ;setModal(true);
   }
