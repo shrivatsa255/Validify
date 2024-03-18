@@ -1,4 +1,4 @@
-'use client'
+
 const Banner = ({ parentStyles, childStyles, name }) => (
   <div className={`relative w-full flex items-center z-0 overflow-hidden bg-indigo-700 shadow-xl ${parentStyles}`}>
     <p className={`font-bold font-poppins leading-70 text-5xl text-white ${childStyles}`}>{name}</p>

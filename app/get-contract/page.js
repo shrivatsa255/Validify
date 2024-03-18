@@ -1,8 +1,10 @@
 "use client"
 import { useState } from "react";
-import { InfoCard, Input, Button } from "../components";
 import { useStore } from "../store/store"
-
+import dynamic from "next/dynamic";
+const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
+const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
+const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
 
 const getContract = () => {
   const { contractAddress, fetchContractAddress} = useStore()
@@ -23,19 +25,19 @@ const [address, setAddress] = useState(null)
           <h3 className="font-poppins dark:text-white text-nft-black-1 text-xl minlg:text-2xl font-semibold ml-4 sm:ml-0">
             Description
           </h3>
-          <InfoCard
+          <DynamicInfoCard
             content="Companies can fetch the address of the SMART-CONTRACTS that will serve as a registry of all the products of the company"
             warning="Fetch the Company specific Contract Address by providing the Company specific Metamask Wallet Address in the below area"
             classStyles="text-md"
           />
           <div className="ml-4 sm:ml-0">
-            <Input
+            <DynamicInput
               title="Fetch Address"
               placeholder="Enter the company wallet address"
               handleClick={(e) => setWalletAddress(e.target.value)}
             />
             <div className="mt-8 sm:my-4 flex sm:justify-end">
-              <Button
+              <DynamicButton
                 btnName="Fetch Address"
                 classStyles="rounded-xl"
                 handleClick={handleSubmit}
@@ -43,7 +45,7 @@ const [address, setAddress] = useState(null)
             </div>
             <div>
             {address && (
-              <InfoCard content="Contract Address" warning={address} />
+              <DynamicInfoCard content="Contract Address" warning={address} />
             )}
           </div>
           </div>

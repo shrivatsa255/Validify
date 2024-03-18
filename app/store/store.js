@@ -3,7 +3,7 @@ import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 import { ValidifyAddress, ValidifyAddressesABI } from './constents';
 import { toast } from 'sonner';
-import Error from 'next/error';
+
 
 const fetchContract = (signerOrProvider) =>
  new ethers.Contract(ValidifyAddress, ValidifyAddressesABI, signerOrProvider);

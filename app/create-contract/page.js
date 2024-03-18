@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useStore } from "../store/store"
-import { Button, InfoCard } from "../components";
+import dynamic from "next/dynamic";
+const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
+const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
 import Image from "next/legacy/image";
 import { toast } from "sonner";
 
@@ -58,16 +60,16 @@ const CreateContract = () => {
                   automated transactions with unparalleled ease."
                 </p>
               </div>
-              <Button
+              <DynamicButton
                 btnName="Create Contract"
                 classStyles="rounded-2xl p-8 mt-7"
                 handleClick={handleCreateContract}
               />
               {modal &&
                 (loading ? (
-                  <InfoCard warning="Transaction is being executing" />
+                  <DynamicInfoCard warning="Transaction is being executing" />
                 ) : (
-                  <InfoCard content={updateStatus} warning={contractAddress} />
+                  <DynamicInfoCard content={updateStatus} warning={contractAddress} />
                 ))}
             </div>
           </div>

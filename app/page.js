@@ -2,7 +2,10 @@
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { useEffect, useRef,useState } from "react";
-import { Banner,InfoCard } from "./components";
+import dynamic from "next/dynamic";
+const DynamicBanner = dynamic(() => import('./components/Banner'), { ssr: false });
+const DynamicInfoCard = dynamic(() => import('./components/InfoCard'), { ssr: false });
+
 
 export default function Home() {
   const [hideButtons, setHideButtons] = useState(false);
@@ -41,13 +44,13 @@ export default function Home() {
   return (
     <div className="flex justify-center sm:px-6 p-12">
       <div className="w-full minmd:w-4/5">
-        <Banner
+        <DynamicBanner
           parentStyles="justify-start mb-6 h-72 sm:h-60 p-12 xs:p-4 xs:h-44 rounded-2xl"
           childStyles="md:text-4xl sm:text-2xl sm:text-center xs:text-xl sm:tracking-[2px] text-left"
           name="Validify a Blockchain Solutions for Transparent Product Verification"
         />
       <div className="sm:hidden">
-      <InfoCard
+      <DynamicInfoCard
           content="VALIDIFY is a platform where Companies can register to receive a customized smart contract, which will serve
             as a registry of all products produced by the company.
             This smart contract will be made publicly accessible, allowing any individual to verify the authenticity
@@ -65,28 +68,28 @@ export default function Home() {
             className="flex flex-row w-max overflow-x-scroll no-scrollbar select-none"
             ref={scrollRef}
           >
-            <InfoCard
+            <DynamicInfoCard
               content="Create Smart Contract"
               name="Create"
               link={true}
               linkTo="/create-contract"
               image="/contract.png"
             />
-            <InfoCard
+            <DynamicInfoCard
               content="Fetch Contract Address"
               name="Fetch"
               link={true}
               linkTo="/get-contract"
               image="/fetch.png"
             />
-            <InfoCard
+            <DynamicInfoCard
               content="Add Product to Contract"
               name="Add"
               link={true}
               linkTo="/add-product"
               image="/addProduct.png"
             />
-            <InfoCard
+            <DynamicInfoCard
               content="Verify Authenticity"
               name="Verify"
               link={true}

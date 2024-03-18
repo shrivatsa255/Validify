@@ -1,7 +1,12 @@
 "use client"
 import { useState, useRef } from "react";
 import { useStore } from '../store/store';
-import { InfoCard, Input, Button, QRscanner } from "../components";
+import dynamic from "next/dynamic";
+const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
+const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
+const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
+const DynamicQRscanner = dynamic(() => import('../components/QRscanner'), { ssr: false });
+
 import QrScanner from "qr-scanner";
 
 
@@ -43,7 +48,7 @@ const verifyProduct = () => {
           <h3 className="font-poppins dark:text-white text-nft-black-1 text-xl minlg:text-2xl font-semibold ml-4 sm:ml-0">
             Description
           </h3>
-          <InfoCard
+          <DynamicInfoCard
             content="Consumers can verify their products manufactured by a specific company through the blockchain SMART-CONTRACT"
             warning="Verify the product in the SMART-CONTRACT by providing the company CONTRACT ADDRESS and the PRODUCT ID"
             classStyles="text-md"
@@ -61,10 +66,10 @@ const verifyProduct = () => {
               />
               <div className="mt-4 flex-row">
                 {file && <img src={URL.createObjectURL(file)} alt="QR Code" />}
-                {data && <InfoCard content={data} />}
+                {data && <DynamicInfoCard content={data} />}
               </div>
               <div className="flex flex-row-reverse">
-                <Button
+                <DynamicButton
                   btnName="Scan QR"
                   classStyles="rounded-xl mt-7"
                   handleClick={() => fileRef.current.click()}
@@ -85,7 +90,7 @@ const verifyProduct = () => {
              <p className="font-poppins font-semibold break-all dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-md">
                 To scan the QR press the below button
             </p>
-            <Button
+            <DynamicButton
               btnName="Scan QR"
               classStyles="rounded-lg mt-5"
               handleClick={() => setStartScan(true)}
@@ -96,19 +101,19 @@ const verifyProduct = () => {
           </div>
         </div>
           <div className="ml-4 sm:ml-0">
-            <Input
+            <DynamicInput
               title="Contract Address"
               placeholder="Enter the company contract address"
               handleClick={(e) => setCompanyContractAddress(e.target.value)}
             />
-            <Input
+            <DynamicInput
               title="Product Id"
               placeholder="Enter Product Id"
               handleClick={(e) => setProductId(e.target.value)}
             />
 
             <div className="mt-8 flex justify-end">
-              <Button
+              <DynamicButton
                 btnName="Verify"
                 classStyles="rounded-xl"
                 handleClick={handleVerifyProduct}
@@ -116,7 +121,7 @@ const verifyProduct = () => {
             </div>
             <div className="mt-7">
               {productStatus && (
-                <InfoCard content={`Result : ${productStatus}`} />
+                <DynamicInfoCard content={`Result : ${productStatus}`} />
               )}
             </div>
           </div>

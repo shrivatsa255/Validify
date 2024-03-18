@@ -1,7 +1,9 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Navbar,Footer } from "./components";
+import dynamic from "next/dynamic";
+const DynamicNavbar = dynamic(() => import('./components/Navbar'), { ssr: false });
+const DynamicFooter = dynamic(() => import('./components/Footer'), { ssr: false });
 import { Toaster} from 'sonner';
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,9 +19,9 @@ export default function RootLayout({ children }) {
       <ThemeProvider attribute="class">
       <main className="dark:bg-nft-dark bg-white min-h-screen sm:tracking-normal overflow-hidden">
       <Toaster richColors position="top-right"/>
-      <Navbar/>
+      <DynamicNavbar/>
       <div className="pt-65">{children}</div>
-      <Footer/>
+      <DynamicFooter/>
       </main>
       </ThemeProvider>
       </body>

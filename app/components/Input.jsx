@@ -1,5 +1,4 @@
 
-'use client'
 const Input = ({ inputType, title, placeholder, handleClick,value,ref }) => {
 
   return (

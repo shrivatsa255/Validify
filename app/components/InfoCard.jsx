@@ -1,4 +1,4 @@
-'use client'
+
 import { useRouter } from "next/navigation";
 import { Button } from "../components";
 import Image from "next/legacy/image";
