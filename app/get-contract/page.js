@@ -9,8 +9,8 @@ const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false
 const getContract = () => {
   const { contractAddress, fetchContractAddress} = useStore()
   const [walletAddress, setWalletAddress] = useState('');
-const [address, setAddress] = useState(null)
-const [store, setStore] = useState(null);
+const [address, setAddress] = useState()
+
   
  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
