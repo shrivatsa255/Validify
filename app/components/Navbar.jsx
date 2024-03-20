@@ -26,7 +26,7 @@ const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
   };
   return (
     <ul
-      className={`list-none flexCenter flex-row ${
+      className={`list-none flexCenter  flex-row ${
         isMobile && "flex-col h-full"
       }`}
     >
@@ -43,7 +43,7 @@ const MenuItems = ({ isMobile, active, setActive, setIsOpen }) => {
             setActive(item);
             {isMobile && setIsOpen(false)}
           }}
-          className={`flex flex-row items-center font-poppins font-semibold text-base dark:hover:text-white hover:text-nft-dark mx-3 ${
+          className={`flex flex-row items-center font-poppins font-semibold text-base hover:scale-110 duration-100 dark:hover:text-white hover:text-nft-dark mx-3 ${
             active === item
               ? "dark:text-white text-nft-black-1"
               : "dark:text-nft-gray-3 text-nft-gray-2"
