@@ -12,8 +12,8 @@ const CreateContract = () => {
   const [modal, setModal] = useState(false)
   const [loading, setLoading] = useState(false)
   
-  const handleCreateContract = () =>{
-    contractAddress ? toast.warning("Contract Already Exists")  : createContract() ;setModal(true);
+  const handleCreateContract = async () =>{
+    await contractAddress ? toast.warning("Contract Already Exists")  : createContract() ;setModal(true);
   }
   return (
     <div className="flex-1 sm:px-4">

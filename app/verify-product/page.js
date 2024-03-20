@@ -22,8 +22,8 @@ const verifyProduct = () => {
 
   const [startScan, setStartScan] = useState(false)
 
-  const handleVerifyProduct = () =>{
-    checkProduct(companyContractAddress,productId)
+  const handleVerifyProduct = async() =>{
+    await checkProduct(companyContractAddress,productId)
   }
   const [file, setFile] = useState(null);
   const [data, setData] = useState(null);

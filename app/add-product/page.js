@@ -28,8 +28,8 @@ const AddProduct = () => {
  const [productBrand, setProductBrand] = useState("");
  const [url, setUrl] = useState('')
 
-const handleAddProducts=()=>{
-    addProducts(productId)
+const handleAddProducts= async()=>{
+   await addProducts(productId)
 }
  const qrRef = useRef();
 

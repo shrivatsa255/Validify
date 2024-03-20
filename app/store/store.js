@@ -30,7 +30,7 @@ export const useStore = create((set, get) => ({
     window.location.reload();
  },
  checkIfWalletIsConnected: async () => {
-    if (!window.ethereum) return alert("Please install MetaMask");
+    if (!window.ethereum) return toast.info("Please install MetaMask");
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     if (accounts.length) {
       set({ currentAccount: accounts[0] });
