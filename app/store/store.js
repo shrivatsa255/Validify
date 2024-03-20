@@ -1,16 +1,12 @@
-'use client'
-import { create } from 'zustand';
+
+import {create} from 'zustand';
 import { ethers } from 'ethers';
 import Web3Modal from 'web3modal';
 import { ValidifyAddress, ValidifyAddressesABI } from './constents';
 import { toast } from 'sonner';
 
-// Function to fetch the contract
 const fetchContract = (signerOrProvider) =>
  new ethers.Contract(ValidifyAddress, ValidifyAddressesABI, signerOrProvider);
-
-// Check if we are in a browser environment
-const isBrowser = typeof window !== 'undefined';
 
 export const useStore = create((set, get) => ({
  currentAccount: '',
@@ -26,7 +22,7 @@ export const useStore = create((set, get) => ({
  productStatus:'', // Initialized as an empty string
  walletAddress: '', // Initialized as an empty string
  connectWallet: async () => {
-    if (!isBrowser || !window.ethereum) return alert("Please install MetaMask");
+    if (!window.ethereum) return toast.info("Please install MetaMask");
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
@@ -34,7 +30,7 @@ export const useStore = create((set, get) => ({
     window.location.reload();
  },
  checkIfWalletIsConnected: async () => {
-    if (!isBrowser || !window.ethereum) return alert("Please install MetaMask");
+    if (!window.ethereum) return alert("Please install MetaMask");
     const accounts = await window.ethereum.request({ method: "eth_accounts" });
     if (accounts.length) {
       set({ currentAccount: accounts[0] });
@@ -43,8 +39,8 @@ export const useStore = create((set, get) => ({
     }
  },
  fetchContractAddress: async (walletAddress) => {
-    if (!isBrowser) return;
     try {
+      if(!window) return;
       const web3modal = new Web3Modal();
       const connection = await web3modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -66,8 +62,8 @@ export const useStore = create((set, get) => ({
     }
  },
  createContract: async () => {
-    if (!isBrowser) return;
     try {
+      if(!window) return
       const web3modal = new Web3Modal();
       const connection = await web3modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -91,8 +87,8 @@ export const useStore = create((set, get) => ({
     }
  },
  checkProduct: async (companyContractAddress, productId) => {
-    if (!isBrowser) return;
     try {
+      if(!window) return
       const web3modal = new Web3Modal();
       const connection = await web3modal.connect();
       const provider = new ethers.providers.Web3Provider(connection);
@@ -111,7 +107,7 @@ export const useStore = create((set, get) => ({
     }
  },
  addProducts: async (productId) => {
-    if (!isBrowser) return;
+    if(!window) return
     const web3modal = new Web3Modal();
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);

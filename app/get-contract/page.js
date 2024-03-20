@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useState} from "react";
 import { useStore } from "../store/store"
 import dynamic from "next/dynamic";
 const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
@@ -11,13 +11,7 @@ const getContract = () => {
   const [walletAddress, setWalletAddress] = useState('');
 const [address, setAddress] = useState(null)
 const [store, setStore] = useState(null);
-  useEffect(() => {
-    // Ensure this runs only on the client side
-    if (typeof window !== 'undefined') {
-      const storeData = useStore();
-      setStore(storeData);
-    }
- }, []);
+  
  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
     await fetchContractAddress(walletAddress);
