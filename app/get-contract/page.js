@@ -2,20 +2,19 @@
 import { useState} from "react";
 import { useStore } from "../store/store"
 import dynamic from "next/dynamic";
+import { toast } from "sonner";
 const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
 const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
 const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
 
 const getContract = () => {
   const { contractAddress, fetchContractAddress} = useStore()
-  const [walletAddress, setWalletAddress] = useState('');
-const [address, setAddress] = useState()
+  const [address, setAddress] = useState(null)
 
   
  const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the form from submitting normally
-    await fetchContractAddress(walletAddress);
-    setAddress(contractAddress)
+    contractAddress ? setAddress(contractAddress) : toast.info("No Contract Found")
  };
   return (
     <div className="flex-1 sm:px-4 p-12">
@@ -33,11 +32,9 @@ const [address, setAddress] = useState()
             classStyles="text-md"
           />
           <div className="ml-4 sm:ml-0">
-            <DynamicInput
-              title="Fetch Address"
-              placeholder="Enter the company wallet address"
-              handleClick={(e) => setWalletAddress(e.target.value)}
-            />
+          <h1 className=' tracking-tight font-poppins font-semibold  dark:text-white text-nft-black-1 text-xl minlg:text-xl sm:text-[1.3rem]' >
+          Click the below button to fetch your contract address
+        </h1>
             <div className="mt-8 sm:my-4 flex sm:justify-end">
               <DynamicButton
                 btnName="Fetch Address"

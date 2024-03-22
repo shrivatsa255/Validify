@@ -54,7 +54,7 @@ export const useStore = create((set, get) => ({
         );
         set({ contractAddress: address });
       } else {
-        toast.info("Enter wallet address");
+        toast.info("Contract not Created");
       }
     } catch (error) {
       toast.error("Oops... Something went wrong")

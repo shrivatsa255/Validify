@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
       <ThemeProvider attribute="class">
       <main className="dark:bg-nft-dark bg-white min-h-screen sm:tracking-normal overflow-hidden">
-      <Toaster richColors position="top-right"/>
+      <Toaster richColors position="bottom-right"/>
       <DynamicNavbar/>
       <div className="pt-65">{children}</div>
       <DynamicFooter/>
