@@ -1,6 +1,9 @@
 "use client"
-import { useState} from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import QrReader from "react-qr-scanner";
+const DynamicCopyCard = dynamic(() => import('../components/CopyCard'), { ssr: false });
+
 
 const QRScanner = () => {
   const [data, setData] = useState(null);
@@ -13,12 +16,12 @@ const QRScanner = () => {
   const handleScan = (result) => {
     if (result) {
       setData(result.text);
-      setScanning(false);
+      setScanning((prev) => !prev);
     }
   };
 
   return (
-    <div className="rounded-md p-7 bg-nft-dark-3 dark:border-indigo-100 shadow-lg">
+    <>
       {scanning && (
         <QrReader
           constraints={{
@@ -30,8 +33,15 @@ const QRScanner = () => {
           style={{ width: "100%" }}
         />
       )}
-      {data && !scanning && <p>{`Contract Address: ${data}`}</p>}
-    </div>
+      {data && !scanning && (
+        <div>
+          <DynamicCopyCard lable='Contract' content={data.split('?')[0]} />
+          <DynamicCopyCard lable='Product Id' content={data.split('?')[1]} />
+        </div>)
+
+
+      }
+    </>
   );
 };
 

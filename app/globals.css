@@ -109,7 +109,10 @@
     align-items: flex-start;
 }
 
+video{
+    display: inline;
 
+}
 @keyframes fadeIn {
     from {
         opacity: 0;

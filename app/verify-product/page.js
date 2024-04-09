@@ -1,10 +1,11 @@
 "use client"
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useStore } from '../store/store';
 import dynamic from "next/dynamic";
 const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
 const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
 const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
+const DynamicCopyCard = dynamic(() => import('../components/CopyCard'), { ssr: false });
 const DynamicQRscanner = dynamic(() => import('../components/QRscanner'), { ssr: false });
 
 import QrScanner from "qr-scanner";
@@ -36,8 +37,7 @@ const verifyProduct = () => {
     const result = await QrScanner.scanImage(file);
     setData(result);
   };
-  console.log(productId);
-  console.log({data})
+ 
   return (
     <div className="flex-1 sm:px-4 p-12">
       <div className="md:w-full">
@@ -66,7 +66,13 @@ const verifyProduct = () => {
               />
               <div className="mt-4 flex-row">
                 {file && <img src={URL.createObjectURL(file)} alt="QR Code" />}
-                {data && <DynamicInfoCard content={data} />}
+                {data && (
+                  <div>
+                  <DynamicCopyCard lable='Contract' content={data.split('?')[0]} />
+                  <DynamicCopyCard lable='Product Id' content={data.split('?')[1]} />
+                  </div>
+                  
+                ) }
               </div>
               <div className="flex flex-row-reverse">
                 <DynamicButton
@@ -82,7 +88,7 @@ const verifyProduct = () => {
               Scan your QR through camera
             </p>
           </div>
-          <div className="sm:w-full md:w-4/5  dark:bg-nft-black-3  bg-indigo-100 rounded-2xl text-center p-10 minlg:m-8 mt-5 cursor-pointer shadow-md lg:w-1/2">
+          <div className="sm:w-full w-full  dark:bg-nft-black-1  bg-indigo-100 rounded-2xl text-center p-10 minlg:m-8 mt-5 cursor-pointer shadow-md lg:w-7/12 ">
           
           <div className="font-poppins break-all font-semibold dark:text-white text-nft-black-1 text-md minlg:text-xl sm:text-md">
           {!startScan && (

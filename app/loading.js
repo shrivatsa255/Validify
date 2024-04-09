@@ -2,7 +2,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
-import Lottie from 'lottie-web';
 
 const Loading = () => {
  const container = useRef(null);
@@ -10,13 +9,16 @@ const Loading = () => {
 
  useEffect(() => {
     const loadLottie = async () => {
-        Lottie.loadAnimation({
+      if (typeof window !== 'undefined') {
+        const lottie = await import('lottie-web');
+        lottie.loadAnimation({
           container: container.current, // the dom element that will contain the animation
           renderer: 'svg',
           loop: true,
           autoplay: true,
           path: theme === 'light' ? '/loading.json' : '/imposter.json', // the path to the animation json
         });
+      }
     };
 
     loadLottie();

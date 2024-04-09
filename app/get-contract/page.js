@@ -4,8 +4,8 @@ import { useStore } from "../store/store"
 import dynamic from "next/dynamic";
 import { toast } from "sonner";
 const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
-const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
 const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
+const DynamicCopyCard = dynamic(() => import('../components/CopyCard'), { ssr: false });
 
 const getContract = () => {
   const { contractAddress, fetchContractAddress} = useStore()
@@ -44,7 +44,7 @@ const getContract = () => {
             </div>
             <div>
             {address && (
-              <DynamicInfoCard content="Contract Address" warning={address} />
+              <DynamicCopyCard lable='Contract' content={address} />
             )}
           </div>
           </div>

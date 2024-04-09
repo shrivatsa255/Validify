@@ -1,6 +1,6 @@
 "use client"
 import{ useEffect, useState} from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import Image from "next/legacy/image";
 import Link from "next/link";
@@ -63,8 +63,8 @@ const ButtonGroup = ({ setActive, router }) => {
   },[])
   return currentAccount ? (
     <Button
-      btnName="Connected"
-      classStyles="mx-2 rounded-xl bg-teal-500"
+      btnName="Create"
+      classStyles="mx-2 rounded-xl hover:bg-teal-500 bg-teal-500"
       handleClick={() => {
         setActive("");
         router.push("/create-contract");
@@ -78,11 +78,37 @@ const ButtonGroup = ({ setActive, router }) => {
     />
   );
 };
+const checkActive = (active, setActive, pathname)  =>{
+  switch (pathname) {
+    case '/':
+      if(active !== "Home") setActive("Home")
+      break;
+    case '/create-contract':
+      if(active !== "Create Contract") setActive("Listed NFTs")
+      break;
+    case '/get-contract':
+      if(active !== "Fetch Address") setActive("Fetch Address")
+      break;
+     case '/add-product':
+       if(active !== "Add Product") setActive("Add Product")
+      break;
+     case '/verify-product':
+       if(active !== "Verify Product") setActive("Verify Product")
+      break;
+    default:
+      setActive("")
+  }
+}
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
+  const pathname = usePathname()
   const [active, setActive] = useState("Home");
   const [isOpen, setIsopen] = useState(false);
+
+    useEffect(() =>{
+    checkActive(active,setActive,pathname)
+  },[pathname])
 
   return (
     <nav className="flexBetween w-full fixed z-10 p-4 flex-row border-b dark:bg-nft-dark bg-white dark:border-nft-black-1 border-nft-gray-1">
