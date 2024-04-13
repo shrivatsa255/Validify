@@ -9,7 +9,6 @@ const Loading = () => {
 
  useEffect(() => {
     const loadLottie = async () => {
-      if (typeof window !== 'undefined') {
         const lottie = await import('lottie-web');
         lottie.loadAnimation({
           container: container.current, // the dom element that will contain the animation
@@ -19,8 +18,6 @@ const Loading = () => {
           path: theme === 'light' ? '/loading.json' : '/imposter.json', // the path to the animation json
         });
       }
-    };
-
     loadLottie();
  }, [theme]); // Add theme as a dependency to re-run the effect if the theme changes
 

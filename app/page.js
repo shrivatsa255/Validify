@@ -111,8 +111,8 @@ export default function Home() {
                 >
                   <Image
                     src="/left.png"
-                    layout="fill"
-                    objectFit="contain"
+                    width={50}
+                    height={50}
                     alt="leftarrow"
                     className={theme === "light" ? "filter invert" : undefined}
                   />
@@ -125,8 +125,8 @@ export default function Home() {
                 >
                   <Image
                     src="/right.png"
-                    layout="fill"
-                    objectFit="contain"
+                    width={50}
+                    height={50}
                     alt="rightarrow"
                     className={theme === "light" ? "filter invert" : undefined}
                   />

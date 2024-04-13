@@ -1,15 +1,16 @@
-import React from 'react'
-import Button from './Button'
 import { MdContentCopy } from "react-icons/md";
 import { toast } from 'sonner';
 
+import Button from './Button'
+import copy from 'copy-to-clipboard';
+
 const CopyCard = ({content ='', lable = ''}) => {
- const handleCopy = async (textToCopy) => {
+ const handleCopy = (textToCopy) => {
     try {
-      await navigator.clipboard.writeText(textToCopy);
+      copy(textToCopy)
       toast.success('Text copied to clipboard!');
     } catch (err) {
-      console.error('Failed to copy text: ', err);
+      toast.error('Failed to copy text');
     }
  };
   return (
