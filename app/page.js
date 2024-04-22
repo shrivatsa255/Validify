@@ -75,7 +75,7 @@ export default function Home() {
               link={true}
               textStyles='text-center'
               linkTo="/create-contract"
-              image="/contract.png"
+              image="/contract.webp"
             />
             <DynamicInfoCard
               content="Fetch Contract Address"
@@ -83,7 +83,7 @@ export default function Home() {
               textStyles='text-center'
               link={true}
               linkTo="/get-contract"
-              image="/fetch.png"
+              image="/fetch.webp"
             />
             <DynamicInfoCard
               content="Add Product to Contract"
@@ -91,7 +91,7 @@ export default function Home() {
               textStyles='text-center'
               link={true}
               linkTo="/add-product"
-              image="/addProduct.png"
+              image="/addProduct.webp"
             />
             <DynamicInfoCard
               content="Verify Authenticity"
@@ -99,7 +99,7 @@ export default function Home() {
               textStyles='text-center'  
               link={true}
               linkTo="/verify-product"
-              image="/verify.png"
+              image="/verify.webp"
             />
             {!hideButtons && (
               <>
@@ -110,7 +110,7 @@ export default function Home() {
                   className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 left-0 cursor-pointer"
                 >
                   <Image
-                    src="/left.png"
+                    src="/left.webp"
                     width={50}
                     height={50}
                     alt="leftarrow"
@@ -124,7 +124,7 @@ export default function Home() {
                   className="absolute w-8 h-8 minlg:w-12 minlg:h-12 top-45 right-0 cursor-pointer"
                 >
                   <Image
-                    src="/right.png"
+                    src="/right.webp"
                     width={50}
                     height={50}
                     alt="rightarrow"

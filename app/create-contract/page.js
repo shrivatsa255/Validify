@@ -23,7 +23,7 @@ const CreateContract = () => {
             <div className="relative w-557 minmd:w-2/3 minmd:h-2/3  sm:w-full sm:h-300 h-557">
             <h2 className="hidden sm:flex sm:mb-4 font-poppins dark:text-white text-nft-black-1 font-semibold text-2xl  minlg:text-3xl">Create Contract</h2>
               <Image
-                src="/contract.png"
+                src="/contract.webp"
                 objectFit="cover"
                 className="rounded-xl shadow-lg"
                 alt=""

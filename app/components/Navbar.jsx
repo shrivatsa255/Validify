@@ -119,7 +119,7 @@ const Navbar = () => {
             onClick={() => {}}
           >
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               objectFit="contain"
               width={32}
               height={32}
@@ -131,7 +131,7 @@ const Navbar = () => {
         <Link href="/">
           <div className="hidden md:flex" onClick={() => {}}>
             <Image
-              src="/logo.png"
+              src="/logo.webp"
               objectFit="contain"
               width={40}
               height={40}
@@ -169,7 +169,7 @@ const Navbar = () => {
         {isOpen ? (
           theme === "dark" ? (
             <Image
-              src="/cross.png"
+              src="/cross.webp"
               objectFit="contain"
               width={25}
               height={25}
@@ -180,7 +180,7 @@ const Navbar = () => {
             />
           ) : (
             <Image
-              src="/crossB.png"
+              src="/crossB.webp"
               objectFit="contain"
               width={25}
               height={25}
@@ -192,7 +192,7 @@ const Navbar = () => {
           )
         ) : theme === "dark" ? (
           <Image
-            src="/menu.png"
+            src="/menu.webp"
             objectFit="contain"
             width={25}
             height={25}
@@ -203,7 +203,7 @@ const Navbar = () => {
           />
         ) : (
           <Image
-            src="/menuB.png"
+            src="/menuB.webp"
             objectFit="contain"
             width={25}
             height={25}

@@ -23,7 +23,7 @@ const Footer = () => {
 				<div className='flexStart  flex-col sm:hidden'>
 					<div className='flex flex-col items-start sm:mt-4 cursor-pointer sm:hidden'>
 						<Image
-							src='/logo.png'
+							src='/logo.webp'
 							objectFit='contain'
 							width={50}
 							height={50}
