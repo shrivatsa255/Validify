@@ -102,7 +102,7 @@ export const useStore = create((set, get) => ({
       );
       set({ productStatus: result });
     } catch (error) {
-      toast.error("Oops Something went wrong!!!")
+      toast.error("Invalid Contract!!!")
       console.log(error);
     }
  },
