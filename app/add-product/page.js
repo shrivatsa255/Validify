@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 const DynamicInfoCard = dynamic(() => import('../components/InfoCard'), { ssr: false });
 const DynamicInput = dynamic(() => import('../components/Input'), { ssr: false });
 const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false });
-// Adjust the import path as necessary
+
 import { QRCodeCanvas } from "qrcode.react";
 import { toast } from "sonner";
 

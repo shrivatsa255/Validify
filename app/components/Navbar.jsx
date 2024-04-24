@@ -103,11 +103,13 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const pathname = usePathname()
+  const { checkIfWalletIsConnected } = useStore()
   const [active, setActive] = useState("Home");
   const [isOpen, setIsopen] = useState(false);
 
     useEffect(() =>{
     checkActive(active,setActive,pathname)
+    checkIfWalletIsConnected()
   },[pathname])
 
   return (

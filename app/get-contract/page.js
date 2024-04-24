@@ -8,7 +8,7 @@ const DynamicButton = dynamic(() => import('../components/Button'), { ssr: false
 const DynamicCopyCard = dynamic(() => import('../components/CopyCard'), { ssr: false });
 
 const getContract = () => {
-  const { contractAddress, fetchContractAddress} = useStore()
+  const { contractAddress } = useStore()
   const [address, setAddress] = useState(null)
 
   
