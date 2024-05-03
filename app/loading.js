@@ -1,5 +1,5 @@
 // components/Loading.js
-// 'use client';
+'use client';
 import React, { useEffect, useRef } from 'react';
 // import { useTheme } from 'next-themes';
 
