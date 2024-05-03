@@ -1,11 +1,12 @@
 // components/Loading.js
-'use client';
+// 'use client';
 import React, { useEffect, useRef } from 'react';
-import { useTheme } from 'next-themes';
+// import { useTheme } from 'next-themes';
 
 const Loading = () => {
  const container = useRef(null);
- const { theme } = useTheme();
+ // const { theme } = useTheme();
+ // theme === 'light' ? '/loading.json' : '/imposter.json', 
 
  useEffect(() => {
     const loadLottie = async () => {
@@ -15,7 +16,7 @@ const Loading = () => {
           renderer: 'svg',
           loop: true,
           autoplay: true,
-          path: theme === 'light' ? '/loading.json' : '/imposter.json', // the path to the animation json
+          path: '/loading.json' // the path to the animation json
         });
       }
     loadLottie();
