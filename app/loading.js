@@ -20,7 +20,7 @@ const Loading = () => {
         });
       }
     loadLottie();
- }, [theme]); // Add theme as a dependency to re-run the effect if the theme changes
+ }, []); // Add theme as a dependency to re-run the effect if the theme changes
 
  return <div className="justify-center items-center w-screen h-screen" ref={container}></div>;
 };
